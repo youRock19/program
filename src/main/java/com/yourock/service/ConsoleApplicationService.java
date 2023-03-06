@@ -1,10 +1,7 @@
-package service;
+package com.yourock.service;
 
-import com.yourock.behavior.DocxPageCount;
 import com.yourock.behavior.PageCount;
-import com.yourock.behavior.PdfPageCount;
-import request.BaseData;
-import request.ConsoleBaseData;
+import com.yourock.request.BaseData;
 
 public class ConsoleApplicationService extends BaseService {
     public ConsoleApplicationService(BaseData baseData, PageCount ...pageCount) {

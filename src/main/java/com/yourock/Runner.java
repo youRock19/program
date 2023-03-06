@@ -1,22 +1,19 @@
+package com.yourock;
+
 import com.yourock.behavior.DocxPageCount;
 import com.yourock.behavior.PdfPageCount;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import request.BaseData;
-import request.ConsoleBaseData;
-import service.ConsoleApplicationService;
+import com.yourock.request.ConsoleBaseData;
+import com.yourock.service.ConsoleApplicationService;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-import static java.lang.System.out;
 
 public class
 Runner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         ConsoleBaseData consoleBaseData = ConsoleBaseData.getInstance();
 
@@ -24,7 +21,6 @@ Runner {
                 new PdfPageCount(consoleBaseData), new DocxPageCount(consoleBaseData));
 
         service.display();
-
 
     }
 }

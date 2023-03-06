@@ -1,14 +1,12 @@
-package service;
+package com.yourock.service;
 
 import com.yourock.behavior.PageCount;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import request.BaseData;
+import com.yourock.request.BaseData;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 @Getter

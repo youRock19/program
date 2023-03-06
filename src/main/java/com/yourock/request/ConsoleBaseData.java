@@ -1,15 +1,14 @@
-package request;
+package com.yourock.request;
 
 import lombok.Getter;
 
 import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
+
 @Getter
-public class ConsoleBaseData implements BaseData{
+public class ConsoleBaseData implements BaseData {
     private volatile static ConsoleBaseData instance;
     private Path path;
 
@@ -30,26 +29,20 @@ public class ConsoleBaseData implements BaseData{
 
 
     public void setPath() {
-        try(Scanner scanner = new Scanner(System.in)) {
-            Path path = null;
+        try (Scanner scanner = new Scanner(System.in)) {
             boolean isEnabled = true;
             System.out.println("Please enter directory name or 'exit' to exit");
-            while (isEnabled) {
+            do {
                 String data = scanner.nextLine();
+                this.path = Paths.get(data);
                 if (data.equals("exit")) {
                     isEnabled = false;
-                }
-                try {
-                    this.path = Paths.get(data);
-                    if (!Files.exists(this.path)) {
-                        throw new NoSuchElementException();
-                    }
+                } else if (this.path.isAbsolute() && Files.isDirectory(this.path)) {
                     isEnabled = false;
-                } catch (InvalidPathException | NoSuchElementException e) {
-                    this.path = null;
+                } else {
                     System.out.println("This directory is not exist, try again or 'exit' to exit");
                 }
-            }
+            } while ((isEnabled));
         }
     }
 }
